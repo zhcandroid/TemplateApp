@@ -8,9 +8,7 @@ import android.view.View;
 import com.gyf.barlibrary.ImmersionBar;
 
 /**
- *    author : HJQ
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
+
  *    desc   : 支持沉浸式Fragment懒加载基类（默认不开启沉浸式）
  */
 public abstract class UILazyFragment extends BaseLazyFragment {

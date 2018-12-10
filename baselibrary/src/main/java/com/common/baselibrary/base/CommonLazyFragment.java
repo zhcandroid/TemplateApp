@@ -12,9 +12,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- *    author : HJQ
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
  *    desc   : 项目中Fragment懒加载基类
  */
 public abstract class CommonLazyFragment extends UILazyFragment {
