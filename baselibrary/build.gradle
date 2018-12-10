@@ -46,4 +46,11 @@ dependencies {
     api 'com.gyf.barlibrary:barlibrary:2.3.0'
     // 侧滑功能：https://github.com/bingoogolapple/BGASwipeBackLayout-Android
     api 'cn.bingoogolapple:bga-swipebacklayout:1.1.9@aar'
+
+    // ButterKnife注解库：https://github.com/JakeWharton/butterknife
+    api "com.jakewharton:butterknife:$rootProject.var.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
+
+    // 友盟统计
+    compileOnly 'com.umeng.analytics:analytics:6.1.4'
 }
