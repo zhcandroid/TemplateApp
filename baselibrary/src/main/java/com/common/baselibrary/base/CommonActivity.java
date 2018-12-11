@@ -4,6 +4,8 @@ import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 
 import com.common.baselibrary.R;
+import com.common.baselibrary.entity.Event;
+import com.common.baselibrary.utils.RxBus;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -13,6 +15,9 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * 项目中的Activity基类
@@ -20,6 +25,7 @@ import butterknife.Unbinder;
 public abstract class CommonActivity extends UiActivity {
 
     private Unbinder mButterKnife;//View注解
+    private CompositeDisposable mDisposables;
 
     SmartRefreshLayout mSmartRefresh;
 
@@ -34,15 +40,18 @@ public abstract class CommonActivity extends UiActivity {
 
         initSmartRefresh();
 
+        initEventBus();
+
         super.init();
     }
+
 
     /**
      * 初始化数据刷新框架
      */
     private void initSmartRefresh() {
         mSmartRefresh = findViewById(R.id.smart_refresh);
-        if(mSmartRefresh == null) {
+        if (mSmartRefresh == null) {
             mSmartRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
                 @Override
                 public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -62,14 +71,59 @@ public abstract class CommonActivity extends UiActivity {
 
     }
 
+
+    private void initEventBus() {
+
+        if (useEventBus()) {
+            //注册eventbus
+            Disposable disposable = RxBus.getDefault()
+                    .register(Event.class, new Consumer<Event>() {
+                        @Override
+                        public void accept(Event event) {
+                            int eventCode = event.getCode();
+                            switch (eventCode) {
+                                case Event.EVENT_CLOSE_ALL_ACTIVITY:
+
+                                    break;
+                                default:
+                                    onEvent(event);
+                                    break;
+                            }
+                        }
+                    });
+            addDispose(disposable);
+        }
+    }
+
     /**
-     * 子类不必实现，自动调用initData刷新数据
+     * 子类自己实现，处理接收到到Rxbus
+     *
+     * @param event
+     */
+    protected void onEvent(Event event) {
+
+    }
+
+    /**
+     * RxJava 添加订阅
+     */
+    protected void addDispose(Disposable disposable) {
+        if (mDisposables == null) {
+            mDisposables = new CompositeDisposable();
+        }
+        //将所有disposable放入,集中处理
+        mDisposables.add(disposable);
+    }
+
+    /**
+     * 子类不必自己实现 刷新数据 默认调用initData
      *
      * @param refreshLayout
      */
     protected void onRefreshData(RefreshLayout refreshLayout) {
         initData();
     }
+
     /**
      * 子类自己实现，onLoadMoreData
      *
@@ -78,6 +132,7 @@ public abstract class CommonActivity extends UiActivity {
     protected void onLoadMoreData(RefreshLayout refreshLayout) {
 
     }
+
     /**
      * 子类自己实现，是否使用加载更多,默认使用
      *
@@ -129,6 +184,15 @@ public abstract class CommonActivity extends UiActivity {
     }
 
     /**
+     * 子类自己实现，是否实用Rxbus,默认不使用
+     *
+     * @return
+     */
+    protected boolean useEventBus() {
+        return false;
+    }
+
+    /**
      * 初始化横竖屏方向，会和 LauncherTheme 主题样式有冲突，注意不要同时使用
      */
     protected void initOrientation() {
@@ -161,5 +225,6 @@ public abstract class CommonActivity extends UiActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (mButterKnife != null) mButterKnife.unbind();
+        RxBus.getDefault().unregister(mDisposables);
     }
 }
