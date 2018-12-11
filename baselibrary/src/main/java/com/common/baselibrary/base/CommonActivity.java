@@ -1,8 +1,15 @@
 package com.common.baselibrary.base;
 
 import android.content.pm.ActivityInfo;
+import android.support.annotation.NonNull;
 
+import com.common.baselibrary.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.umeng.analytics.MobclickAgent;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -14,6 +21,10 @@ public abstract class CommonActivity extends UiActivity {
 
     private Unbinder mButterKnife;//View注解
 
+    SmartRefreshLayout mSmartRefresh;
+
+    protected int pageIndex;
+
     @Override
     protected void init() {
 
@@ -21,9 +32,101 @@ public abstract class CommonActivity extends UiActivity {
 
         initOrientation();
 
+        initSmartRefresh();
+
         super.init();
     }
 
+    /**
+     * 初始化数据刷新框架
+     */
+    private void initSmartRefresh() {
+        mSmartRefresh = findViewById(R.id.smart_refresh);
+        if(mSmartRefresh == null) {
+            mSmartRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    onRefreshData(refreshLayout);
+                }
+
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                    onLoadMoreData(refreshLayout);
+                }
+            });
+            if (!useLoadMore()) {
+                mSmartRefresh.setEnableLoadMore(false);
+            }
+        }
+
+
+    }
+
+    /**
+     * 子类不必实现，自动调用initData刷新数据
+     *
+     * @param refreshLayout
+     */
+    protected void onRefreshData(RefreshLayout refreshLayout) {
+        initData();
+    }
+    /**
+     * 子类自己实现，onLoadMoreData
+     *
+     * @param refreshLayout
+     */
+    protected void onLoadMoreData(RefreshLayout refreshLayout) {
+
+    }
+    /**
+     * 子类自己实现，是否使用加载更多,默认使用
+     *
+     * @return
+     */
+    protected boolean useLoadMore() {
+        return true;
+    }
+
+    /**
+     * 子类自己实现，加载更多成功后的操作
+     *
+     * @param mlist
+     */
+    protected void onLoadMoreSuccess(List mlist) {
+        pageIndex++;
+        if (mSmartRefresh != null) {
+            if (mlist == null) {
+                return;
+            }
+            if (mlist.size() == 0) {
+                mSmartRefresh.finishLoadMoreWithNoMoreData();
+            } else {
+                mSmartRefresh.finishLoadMore();
+            }
+        }
+    }
+
+    /**
+     * 若无特殊需求，子类可以不处理加载更多失败后的操作。
+     *
+     * @param msg
+     */
+    public void onLoadMoreFail(String msg) {
+        if (mSmartRefresh != null) {
+            mSmartRefresh.finishLoadMore();
+        }
+
+        loadMoreFail(msg);
+    }
+
+    /**
+     * 子类自己实现，loadMoreFail
+     *
+     * @param msg
+     */
+    protected void loadMoreFail(String msg) {
+
+    }
 
     /**
      * 初始化横竖屏方向，会和 LauncherTheme 主题样式有冲突，注意不要同时使用
