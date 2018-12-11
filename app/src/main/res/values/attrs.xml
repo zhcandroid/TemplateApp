@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自定义属性 请写在此文件中-->
+<resources>
+
+    <!--实现左右对齐的textView-->
+    <declare-styleable name="AlignTextView">
+        <attr name="alignOnlyOneLine" format="boolean"></attr>
+    </declare-styleable>
+
+</resources>
