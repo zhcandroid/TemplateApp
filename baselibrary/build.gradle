@@ -37,6 +37,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     //rxbus库
     api 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
     api 'io.reactivex.rxjava2:rxjava:2.2.4'
@@ -53,4 +54,6 @@ dependencies {
 
     // 友盟统计
     compileOnly 'com.umeng.analytics:analytics:6.1.4'
+    //Toast工具 https://github.com/getActivity/ToastUtils
+    api 'com.hjq:toast:5.0'
 }
