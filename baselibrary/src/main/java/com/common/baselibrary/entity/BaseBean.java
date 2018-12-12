@@ -1,4 +1,4 @@
-package com.common.baselibrary.bean;
+package com.common.baselibrary.entity;
 
 import java.io.Serializable;
 
