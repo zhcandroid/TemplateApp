@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TemplateApp</string>
+
+    <string name="main_tab_name_news">首页</string>
+    <string name="main_tab_name_tweet">推荐</string>
+    <string name="main_tab_name_friends">社交</string>
+    <string name="main_tab_name_my">我的</string>
+    <string name="main_tab_name_explore">消息</string>
 </resources>

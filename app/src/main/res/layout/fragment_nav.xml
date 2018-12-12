@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:background="#ffe6e6e6"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.template.app.view.NavigationButton
+            android:id="@+id/nav_item_news"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/lay_12"
+            android:paddingRight="@dimen/lay_12" />
+
+        <com.template.app.view.NavigationButton
+            android:id="@+id/nav_item_tweet"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/lay_12"
+            android:paddingRight="@dimen/lay_12" />
+
+
+        <ImageView
+            android:id="@+id/center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@null"
+            android:padding="2dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_friends_nor"
+            android:visibility="invisible" />
+
+        <com.template.app.view.NavigationButton
+            android:id="@+id/nav_item_explore"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/lay_12"
+            android:paddingRight="@dimen/lay_12" />
+
+        <com.template.app.view.NavigationButton
+            android:id="@+id/nav_item_me"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/lay_12"
+            android:paddingRight="@dimen/lay_12" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@mipmap/bg_home_friends_nor">
+
+        <com.template.app.view.NavigationButton
+            android:id="@+id/nav_item_tweet_pub"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>
