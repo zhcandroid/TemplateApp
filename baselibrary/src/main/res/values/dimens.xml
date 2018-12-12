@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--app常用dimens 自己去添加-->
+    <dimen name="titleBar_height">44.0dip</dimen>
+</resources>

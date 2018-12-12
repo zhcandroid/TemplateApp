@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- app常用颜色 自己去添加-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="actionbar_background">@color/main_green</color>
+    <color name="main_green">#24cf5f</color>
+    <color name="main_gray">#cccccc</color>
+    <color name="center_blue_start">#296edb</color>
+    <color name="center_blue_end">#3b80e8</color>
+    <color name="center_law_office">#88b3f6</color>
+    <color name="main_back">#333333</color>
+    <color name="main_gray_666">#666666</color>
+    <color name="main_gray_999">#999999</color>
+    <color name="main_gray_ccc">#cccccc</color>
+    <color name="ff363636">#ff363636</color>
+    <color name="price_read">#e86516</color>
+    <color name="earn_bj">#FA9C10</color>
+    <color name="hint_red">#EE003E</color>
+    <color name="main_bg">#f2f2f2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="main_bg_item">#EFEFEF</color>
+
+
+</resources>
