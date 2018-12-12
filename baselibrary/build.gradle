@@ -54,7 +54,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
 
     // 友盟统计
-    compileOnly 'com.umeng.analytics:analytics:6.1.4'
+    api 'com.umeng.analytics:analytics:6.1.4'
     //Toast工具 https://github.com/getActivity/ToastUtils
     api 'com.hjq:toast:5.0'
 

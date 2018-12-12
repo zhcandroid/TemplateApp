@@ -11,6 +11,15 @@ android {
         versionCode var.versionCode
         versionName var.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME      : applicationId,
+                JPUSH_APPKEY       : "25c120b5fe70af0b7d10cb17", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL      : "developer-default", //暂时填写默认值即可.
+                //友盟统计渠道
+                UMENG_CHANNEL_VALUE: "default_channel"
+
+        ]
     }
     buildTypes {
         release {
@@ -18,6 +27,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    flavorDimensions "default"//这个名字貌似随便取，也可以有多个，总之一定要有
+    //多渠道打包
+    productFlavors {
+        kuan {}     //酷安
+        tencent {}  //应用宝
+        baidu {}    //百度
+        xiaomi {}   //小米
+        huawei {}   //华为
+        google {}   //谷歌
+
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+
+
+
 }
 
 dependencies {
