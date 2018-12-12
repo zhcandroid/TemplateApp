@@ -2,6 +2,8 @@ package com.common.baselibrary;
 
 import android.app.Application;
 
+import com.umeng.analytics.MobclickAgent;
+
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
 /**
@@ -13,17 +15,12 @@ public class BaseLibraryApp {
     private static Application application;
     private static boolean debug;
 
-
-    public static void init(Application app){
-        setApplication(app);
-        setDebug(debug);
-        initBGASwipe(app);
-    }
-
     public static void init(Application app,boolean debug){
         setApplication(app);
         setDebug(debug);
         initBGASwipe(app);
+        //多渠道统计 /** 设置是否对日志信息进行加密, 默认false(不加密). */
+        MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
     }
 
     public static Application getApplication() {
