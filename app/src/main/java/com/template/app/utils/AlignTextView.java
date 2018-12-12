@@ -11,6 +11,11 @@ import android.util.AttributeSet;
 
 import com.template.app.R;
 
+/**
+ *
+ * 实现两端对齐的textView
+ * 不需要的话就不要使用 效率是一个问题
+ */
 public class AlignTextView extends AppCompatTextView {
 
     private boolean alignOnlyOneLine;
