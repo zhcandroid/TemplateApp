@@ -19,8 +19,8 @@ public class BaseLibraryApp {
         setApplication(app);
         setDebug(debug);
         initBGASwipe(app);
-        //多渠道统计 /** 设置是否对日志信息进行加密, 默认false(不加密). */
-        MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
+        // 友盟统计
+        MobclickAgent.setScenarioType(app, MobclickAgent.EScenarioType.E_UM_NORMAL);
     }
 
     public static Application getApplication() {
