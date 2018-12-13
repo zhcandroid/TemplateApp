@@ -13,6 +13,7 @@ buildscript {
         //https://blog.csdn.net/huwan12345/article/details/77976533
         classpath "com.jakewharton:butterknife-gradle-plugin:8.4.0"
 
+        classpath "com.alibaba:arouter-register:1.0.2"
     }
 }
 

@@ -23,10 +23,9 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+
         //初始化基础库
         BaseLibraryApp.init(this,true);
-        //路由初始化
-        ARouter.init(BaseApplication.this);
     }
 
     @Override

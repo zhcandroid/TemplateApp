@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion var.compileSdkVersion
@@ -15,7 +16,7 @@ android {
         javaCompileOptions {
 
             annotationProcessorOptions {
-
+                includeCompileClasspath = true
                 arguments = [moduleName :project.getName() ]
 
             } }

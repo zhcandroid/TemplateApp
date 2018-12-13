@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.alibaba.arouter'
+
 android {
     compileSdkVersion var.compileSdkVersion
     buildToolsVersion var.buildToolsVersion
@@ -21,15 +23,13 @@ android {
         ]
 
         javaCompileOptions {
-
             annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+                includeCompileClasspath = true
+            }
+        }
 
-                arguments = [moduleName :project.getName() ]
 
-            } }
-
-        //添加如下配置就OK了
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -38,6 +38,11 @@ android {
         }
     }
 
+
+    //防止编译的时候oom、GC
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 
     flavorDimensions "default"//这个名字貌似随便取，也可以有多个，总之一定要有
     //多渠道打包
@@ -58,17 +63,23 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':baselibrary')
+
     implementation "com.android.support:appcompat-v7:$rootProject.var.supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+
+
     // 今日头条屏幕适配方案 https://github.com/JessYanCoding/AndroidAutoSize
     implementation 'me.jessyan:autosize:1.1.0'
 
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
-    implementation project(':baselibrary')
+    annotationProcessor ('com.alibaba:arouter-compiler:1.1.4') {
+        exclude group: 'com.android.support'
+    }
 
 }

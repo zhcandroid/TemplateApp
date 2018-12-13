@@ -2,6 +2,7 @@ package com.common.baselibrary;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -21,8 +22,12 @@ public class BaseLibraryApp {
         setDebug(debug);
         initBGASwipe(app);
         ToastUtils.init(app);
+        //路由初始化
+        ARouter.init(app);
         // 友盟统计
         MobclickAgent.setScenarioType(app, MobclickAgent.EScenarioType.E_UM_NORMAL);
+
+
     }
 
     public static Application getApplication() {
