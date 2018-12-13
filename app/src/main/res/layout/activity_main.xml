@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_titleBar"
+    <com.common.baselibrary.view.TitleBar
+        android:id="@+id/id_titleBar"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="#00ff00"
-        android:gravity="center"
-        android:text="我是title" />
+        android:layout_height="@dimen/lay_44"
+        android:background="@color/main_blue"
+        app:aIcon="@mipmap/ic_launcher"
+        app:aTitle="模版app"></com.common.baselibrary.view.TitleBar>
 
     <RelativeLayout
         android:id="@+id/activity_main_ui"

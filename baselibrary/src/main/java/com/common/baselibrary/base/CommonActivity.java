@@ -2,10 +2,13 @@ package com.common.baselibrary.base;
 
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.common.baselibrary.R;
 import com.common.baselibrary.entity.Event;
+import com.common.baselibrary.interf.OnTitleBarListener;
 import com.common.baselibrary.utils.RxBus;
+import com.common.baselibrary.view.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -22,7 +25,7 @@ import io.reactivex.functions.Consumer;
 /**
  * 项目中的Activity基类
  */
-public abstract class CommonActivity extends UiActivity {
+public abstract class CommonActivity extends UiActivity implements OnTitleBarListener {
 
     private Unbinder mButterKnife;//View注解
     private CompositeDisposable mDisposables;
@@ -36,6 +39,8 @@ public abstract class CommonActivity extends UiActivity {
 
         mButterKnife = ButterKnife.bind(this);
 
+        initTitleBar();
+
         initOrientation();
 
         initSmartRefresh();
@@ -45,13 +50,28 @@ public abstract class CommonActivity extends UiActivity {
         super.init();
     }
 
+    /**
+     * 初始化titleBar对项目标题进行统一处理
+     */
+    private void initTitleBar() {
+        //初始化标题栏的监听
+        if (getTitleBarId() > 0) {
+            if (findViewById(getTitleBarId()) instanceof TitleBar) {
+                TitleBar titleBar = (TitleBar) findViewById(getTitleBarId());
+                titleBar.setTitleBarListener(this);
+            }
+        }
+
+
+    }
+
 
     /**
      * 初始化数据刷新框架
      */
     private void initSmartRefresh() {
         mSmartRefresh = findViewById(R.id.smart_refresh);
-        if (mSmartRefresh == null) {
+        if (mSmartRefresh != null) {
             mSmartRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
                 @Override
                 public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -226,5 +246,31 @@ public abstract class CommonActivity extends UiActivity {
         super.onDestroy();
         if (mButterKnife != null) mButterKnife.unbind();
         RxBus.getDefault().unregister(mDisposables);
+    }
+
+    /**
+     * @param v     被点击的左项View
+     */
+    @Override
+    public void onLeftClick(View v) {
+
+    }
+
+    /**
+     *
+     * @param v     被点击的标题View
+     */
+    @Override
+    public void onTitleClick(View v) {
+
+    }
+
+    /**
+     *
+     * @param v     被点击的右项View
+     */
+    @Override
+    public void onRightClick(View v) {
+
     }
 }
