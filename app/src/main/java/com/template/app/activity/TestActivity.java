@@ -7,19 +7,19 @@ import com.common.baselibrary.base.BaseRecyclerViewActivity;
 import com.template.app.AppConfig;
 import com.template.app.R;
 import com.template.app.adapter.TestAdapter;
+import com.template.app.arouter.ARouterUriManger;
 import com.template.app.bean.TestBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(path = AppConfig.AROUTER_TestActivity)
+@Route(path = ARouterUriManger.AROUTER_TestActivity)
 public class TestActivity extends BaseRecyclerViewActivity {
     List<TestBean> data = new ArrayList<>();
 
     @Override
     public void initData() {
         super.initData();
-        ARouter.getInstance().inject(this);
         TestBean testBean = new TestBean();
         testBean.setTest("test---------");
         data.add(testBean);
