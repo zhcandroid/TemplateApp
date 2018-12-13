@@ -26,7 +26,7 @@ public class MainActivity extends UiActivity implements NavFragment.OnNavigation
 
     @Override
     protected int getTitleBarId() {
-        return R.id.tv_titleBar;
+        return R.id.id_titleBar;
     }
 
     @Override

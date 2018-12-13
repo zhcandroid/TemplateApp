@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+    <!--左边的图标-->
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,15 +24,15 @@
             android:layout_alignParentTop="true"
             android:layout_gravity="top|right"
             android:layout_margin="@dimen/lay_8"
-            android:paddingRight="@dimen/lay_4"
-            android:paddingLeft="@dimen/lay_4"
-            android:paddingTop="@dimen/lay_2"
-            android:paddingBottom="@dimen/lay_2"
             android:background="@drawable/ic_red_dot"
             android:ellipsize="none"
             android:gravity="center"
             android:lines="1"
             android:minWidth="8dp"
+            android:paddingBottom="@dimen/lay_2"
+            android:paddingLeft="@dimen/lay_4"
+            android:paddingRight="@dimen/lay_4"
+            android:paddingTop="@dimen/lay_2"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="@dimen/size_6"
@@ -40,20 +40,27 @@
             tools:ignore="EllipsizeMaxLines" />
 
     </FrameLayout>
-
-    <com.ftx.app.view.MyFrontTextView
+    <!--中间标题-->
+    <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/black"
         android:textSize="@dimen/font_18" />
-
+    <!--右边图标-->
     <ImageView
         android:id="@+id/iv_icon"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_gravity="center_vertical|right"
-        android:contentDescription="@string/app_name"
-         />
+        android:contentDescription="@string/app_name" />
+    <!--右侧文本-->
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14" />
 </merge>

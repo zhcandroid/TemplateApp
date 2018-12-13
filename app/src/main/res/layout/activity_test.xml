@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.TestActivity">
 
+    <com.common.baselibrary.view.TitleBar
+        android:id="@+id/id_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_44"
+        app:aTitle="我的女神"
+        app:aRight_text="我是右侧的文字"
+        app:aIcon="@mipmap/ic_launcher"></com.common.baselibrary.view.TitleBar>
 
- <fragment
-     android:id="@+id/homeFragment"
-     android:name="com.template.app.fragment.HomeFragment"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"></fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.template.app.fragment.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></fragment>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
