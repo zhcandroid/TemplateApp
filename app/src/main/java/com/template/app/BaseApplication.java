@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.common.baselibrary.BaseLibraryApp;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -24,8 +25,15 @@ public class BaseApplication extends Application {
         context = this;
         //初始化基础库
         BaseLibraryApp.init(this,true);
+        //路由初始化
+        ARouter.init(BaseApplication.this);
     }
 
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ARouter.getInstance().destroy();
+    }
 
     //static 代码段可以防止内存泄露
     static {

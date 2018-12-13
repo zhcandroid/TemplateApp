@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.common.baselibrary.R;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -23,6 +24,7 @@ public abstract class UiActivity extends BaseActivity implements BGASwipeBackHel
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
         initSwipeBackFinish();
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
     }
 
     @Override

@@ -20,6 +20,14 @@ android {
 
         ]
 
+        javaCompileOptions {
+
+            annotationProcessorOptions {
+
+                arguments = [moduleName :project.getName() ]
+
+            } }
+
         //添加如下配置就OK了
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }

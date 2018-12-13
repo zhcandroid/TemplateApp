@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
@@ -22,6 +23,7 @@ public abstract class CommonLazyFragment extends UILazyFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         mButterKnife = ButterKnife.bind(this, view);
+        ARouter.getInstance().inject(this);
         return view;
     }
 
