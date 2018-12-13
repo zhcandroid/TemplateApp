@@ -1,28 +1,41 @@
 package com.template.app.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import com.common.baselibrary.R2;
-import com.hjq.toast.ToastUtils;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.common.baselibrary.base.BaseRecyclerViewActivity;
+import com.template.app.AppConfig;
 import com.template.app.R;
+import com.template.app.adapter.TestAdapter;
+import com.template.app.bean.TestBean;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TestActivity extends AppCompatActivity {
-
-
+@Route(path = AppConfig.AROUTER_TestActivity)
+public class TestActivity extends BaseRecyclerViewActivity {
+    List<TestBean> data = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-
+    public void initData() {
+        super.initData();
+        ARouter.getInstance().inject(this);
+        TestBean testBean = new TestBean();
+        testBean.setTest("test---------");
+        data.add(testBean);
+        data.add(testBean);
+        data.add(testBean);
+        data.add(testBean);
+        data.add(testBean);
     }
 
+    @Override
+    protected int getTitleBarId() {
+        return 0;
+    }
 
+    @Override
+    protected BaseQuickAdapter getRecyclerAdapter() {
+        return new TestAdapter(R.layout.item_test,data);
+    }
 }
