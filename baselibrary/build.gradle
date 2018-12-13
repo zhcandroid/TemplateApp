@@ -30,7 +30,7 @@ tasks.withType(Javadoc) {//防止编码问题
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
     api "com.android.support:appcompat-v7:$rootProject.var.supportLibraryVersion"
     api "com.android.support:design:$rootProject.var.supportLibraryVersion"
@@ -52,7 +52,6 @@ dependencies {
     // ButterKnife注解库：https://github.com/JakeWharton/butterknife
     api "com.jakewharton:butterknife:$rootProject.var.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
-
     // 友盟统计
     api 'com.umeng.analytics:analytics:6.1.4'
     //Toast工具 https://github.com/getActivity/ToastUtils

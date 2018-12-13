@@ -2,6 +2,7 @@ package com.common.baselibrary;
 
 import android.app.Application;
 
+import com.hjq.toast.ToastUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
@@ -19,6 +20,7 @@ public class BaseLibraryApp {
         setApplication(app);
         setDebug(debug);
         initBGASwipe(app);
+        ToastUtils.init(app);
         // 友盟统计
         MobclickAgent.setScenarioType(app, MobclickAgent.EScenarioType.E_UM_NORMAL);
     }

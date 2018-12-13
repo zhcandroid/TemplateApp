@@ -18,9 +18,17 @@
     <color name="price_read">#e86516</color>
     <color name="earn_bj">#FA9C10</color>
     <color name="hint_red">#EE003E</color>
-    <color name="main_bg">#f2f2f2</color>
     <color name="white">#FFFFFF</color>
     <color name="main_bg_item">#EFEFEF</color>
+
+    <color name="white40">#40FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="green">#008000</color>
+    <color name="main_yellow">#ffe088</color>
+    <color name="main_blue">#1596e7</color>
+    <color name="main_bg">#f2f2f2</color>
+    <color name="main_red_dot">#E35B5A</color>
 
 
 </resources>

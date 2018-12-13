@@ -2,29 +2,24 @@ package com.template.app;
 
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.common.baselibrary.base.BaseLazyFragment;
-import com.common.baselibrary.base.CommonLazyFragment;
+import com.common.baselibrary.base.BaseFragment;
 import com.template.app.fragment.HomeFragment;
 import com.template.app.view.NavigationButton;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NavFragment extends CommonLazyFragment implements View.OnClickListener {
+public class NavFragment extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.nav_item_news)
     NavigationButton mNavNews;
     @BindView(R.id.nav_item_tweet)
@@ -52,13 +47,9 @@ public class NavFragment extends CommonLazyFragment implements View.OnClickListe
         return R.layout.fragment_nav;
     }
 
-    @Override
-    protected int getTitleBarId() {
-        return 0;
-    }
 
     @Override
-    protected void initView() {
+    public void initView(View view) {
         mNavNews.init(R.drawable.tab_icon_new,
                 R.string.main_tab_name_news,
                 HomeFragment.class);
@@ -180,9 +171,16 @@ public class NavFragment extends CommonLazyFragment implements View.OnClickListe
     }
 
     @Override
+    protected boolean isSaveFragementState() {
+        return false;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
     }
+
+
 
     @Override
     public void initData() {

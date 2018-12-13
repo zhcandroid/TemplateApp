@@ -3,6 +3,7 @@ package com.template.app.fragment;
 import android.widget.TextView;
 
 import com.common.baselibrary.base.CommonLazyFragment;
+import com.hjq.toast.ToastUtils;
 import com.template.app.R;
 
 import butterknife.BindView;
@@ -34,5 +35,8 @@ public class HomeFragment extends CommonLazyFragment {
 
     @OnClick(R.id.tv_btn)
     public void onClick() {
+
+        ToastUtils.show("111121222");
+
     }
 }

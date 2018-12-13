@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
-
 android {
     compileSdkVersion var.compileSdkVersion
     buildToolsVersion var.buildToolsVersion
@@ -21,6 +19,9 @@ android {
                 UMENG_CHANNEL_VALUE: "default_channel"
 
         ]
+
+        //添加如下配置就OK了
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -46,7 +47,6 @@ android {
     }
 
 
-
 }
 
 dependencies {
@@ -56,7 +56,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     // 今日头条屏幕适配方案 https://github.com/JessYanCoding/AndroidAutoSize
     implementation 'me.jessyan:autosize:1.1.0'
+
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
     implementation project(':baselibrary')
+
 }

@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- *    desc   : 项目中Fragment懒加载基类
+ * desc : 项目中Fragment懒加载基类
  */
 public abstract class CommonLazyFragment extends UILazyFragment {
 
