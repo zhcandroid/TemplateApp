@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/lay_44"
         android:background="@color/main_blue"
-        app:aRight_text="我是右侧的文字"
+        app:aIcon="@mipmap/ic_launcher"
         app:aTitle="模版app"></com.common.baselibrary.view.TitleBar>
 
     <RelativeLayout
