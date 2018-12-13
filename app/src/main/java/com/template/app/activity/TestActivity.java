@@ -29,10 +29,7 @@ public class TestActivity extends BaseRecyclerViewActivity {
         data.add(testBean);
     }
 
-    @Override
-    protected int getTitleBarId() {
-        return 0;
-    }
+
 
     @Override
     protected BaseQuickAdapter getRecyclerAdapter() {

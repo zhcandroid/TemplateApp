@@ -28,7 +28,10 @@ public abstract class BaseRecyclerViewActivity extends CommonActivity implements
     protected int getLayoutId() {
         return R.layout.activity_base_rv;
     }
-
+    @Override
+    protected int getTitleBarId() {
+        return R.id.id_titleBar;
+    }
 
     @Override
     public void initView() {

@@ -2,7 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <com.common.baselibrary.view.TitleBar
+        android:id="@+id/id_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_44"
+        android:background="@color/main_blue"
+        app:aTitle="我是列表"></com.common.baselibrary.view.TitleBar>
+
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/smart_refresh"
