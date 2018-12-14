@@ -7,6 +7,7 @@ import com.common.baselibrary.base.CommonLazyFragment;
 import com.hjq.toast.ToastUtils;
 import com.template.app.AppConfig;
 import com.template.app.R;
+import com.template.app.arouter.ARouterUIHelper;
 import com.template.app.arouter.ARouterUriManger;
 
 import butterknife.BindView;
@@ -37,6 +38,6 @@ public class HomeFragment extends CommonLazyFragment {
 
     @OnClick(R.id.tv_btn)
     public void onClick() {
-        ARouter.getInstance().build(ARouterUriManger.AROUTER_TestActivity).navigation();
+        ARouterUIHelper.openTestActivity();
     }
 }
