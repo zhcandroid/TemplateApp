@@ -1,9 +1,11 @@
 package com.template.app.arouter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.common.baselibrary.base.BaseActivity;
 
@@ -53,5 +55,12 @@ public class ARouterUtils {
      * */
     public static void toActivity(AppCompatActivity activity, String path, int RequestCode){
         ARouter.getInstance().build(path).navigation(activity,RequestCode);
+    }
+
+    /**
+     * ARouter路由普通不带参数跳转页面
+     * */
+    public static void toActivity(String path, Context context, NavigationCallback callback){
+        ARouter.getInstance().build(path).navigation(context,callback);
     }
 }
