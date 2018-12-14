@@ -58,7 +58,7 @@ public class ARouterUtils {
     }
 
     /**
-     * ARouter路由普通不带参数跳转页面
+     * ARouter路由带回调函数跳转页面
      * */
     public static void toActivity(String path, Context context, NavigationCallback callback){
         ARouter.getInstance().build(path).navigation(context,callback);

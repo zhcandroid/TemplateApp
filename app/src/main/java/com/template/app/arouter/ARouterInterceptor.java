@@ -8,6 +8,9 @@ import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
 
+/**
+ * 使用Interceptor类注解的priority数值越小，越先执行，优先级越高
+ * */
 @Interceptor(priority = 1)
 public class ARouterInterceptor implements IInterceptor {
     @Override
