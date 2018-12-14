@@ -30,7 +30,7 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
     private Unbinder mButterKnife;//View注解
     private CompositeDisposable mDisposables;
 
-    SmartRefreshLayout mSmartRefresh;
+    protected  SmartRefreshLayout mSmartRefresh;
 
     protected int pageIndex;
 
