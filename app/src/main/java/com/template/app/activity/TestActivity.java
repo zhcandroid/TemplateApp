@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.common.baselibrary.base.BaseRecyclerViewActivity;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.scwang.smartrefresh.header.TaurusHeader;
 import com.scwang.smartrefresh.header.WaveSwipeHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -21,6 +22,10 @@ import java.util.List;
 public class TestActivity extends BaseRecyclerViewActivity {
 
 
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
+    }
 
     @Override
     public void initView() {

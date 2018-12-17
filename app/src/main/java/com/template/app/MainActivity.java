@@ -5,11 +5,21 @@ import android.support.v4.app.FragmentManager;
 
 import com.common.baselibrary.base.UiActivity;
 import com.common.baselibrary.interf.OnTabReselectListener;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.template.app.view.NavigationButton;
 
 public class MainActivity extends UiActivity implements NavFragment.OnNavigationReselectListener{
 
     private NavFragment mNavBar;
+
+    /**
+     * 如果使用mvp架构的话 传入Presenter对象即可
+     * @return
+     */
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
+    }
 
     @Override
     protected int getLayoutId() {
