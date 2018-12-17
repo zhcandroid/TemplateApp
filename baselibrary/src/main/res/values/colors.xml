@@ -29,6 +29,7 @@
     <color name="main_blue">#1596e7</color>
     <color name="main_bg">#f2f2f2</color>
     <color name="main_red_dot">#E35B5A</color>
+    <color name="tab_text_color">#b6b6b6</color>
 
 
 </resources>
