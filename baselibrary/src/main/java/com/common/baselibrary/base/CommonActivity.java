@@ -1,7 +1,9 @@
 package com.common.baselibrary.base;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.common.baselibrary.R;
@@ -12,12 +14,14 @@ import com.common.baselibrary.view.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -32,12 +36,18 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
 
     protected  SmartRefreshLayout mSmartRefresh;
 
+    private RxPermissions rxPermissions;
+
+    protected Activity mContext;
 
     @Override
     protected void init() {
-
+        mContext = this;
         mButterKnife = ButterKnife.bind(this);
 
+        if (rxPermissions == null) {
+            rxPermissions = new RxPermissions((FragmentActivity) mContext);
+        }
         initTitleBar();
 
         initOrientation();
@@ -113,6 +123,28 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
                     });
             addDispose(disposable);
         }
+    }
+
+
+    /**
+     * 检查权限
+     * @param observer
+     * @param permissions  Manifest.permission.WRITE_EXTERNAL_STORAGE
+     */
+    public void checkPermission(Observer<Boolean> observer, String... permissions) {
+        rxPermissions.request(permissions)
+                .subscribe(observer);
+    }
+
+    /**
+     * 请求权限
+     * @param context
+     * @param observer
+     * @param permissions
+     */
+    public void requstPermission(Activity context, Observer<Boolean> observer, String... permissions) {
+        rxPermissions.shouldShowRequestPermissionRationale(context, permissions)
+                .subscribe(observer);
     }
 
     /**

@@ -91,7 +91,8 @@ dependencies {
     //日志
     api 'com.orhanobut:logger:2.2.0'
 
-
+    //6.0 动态权限申请
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
 
 
