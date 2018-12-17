@@ -32,7 +32,6 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
 
     protected  SmartRefreshLayout mSmartRefresh;
 
-    protected int pageIndex;
 
     @Override
     protected void init() {
@@ -82,6 +81,7 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
                 public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                     onLoadMoreData(refreshLayout);
                 }
+
             });
             if (!useLoadMore()) {
                 mSmartRefresh.setEnableLoadMore(false);
@@ -141,7 +141,7 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
      * @param refreshLayout
      */
     protected void onRefreshData(RefreshLayout refreshLayout) {
-        initData();
+
     }
 
     /**
@@ -162,46 +162,7 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
         return true;
     }
 
-    /**
-     * 子类自己实现，加载更多成功后的操作
-     *
-     * @param mlist
-     */
-    protected void onLoadMoreSuccess(List mlist) {
-        pageIndex++;
-        if (mSmartRefresh != null) {
-            if (mlist == null) {
-                return;
-            }
-            if (mlist.size() == 0) {
-                mSmartRefresh.finishLoadMoreWithNoMoreData();
-            } else {
-                mSmartRefresh.finishLoadMore();
-            }
-        }
-    }
 
-    /**
-     * 若无特殊需求，子类可以不处理加载更多失败后的操作。
-     *
-     * @param msg
-     */
-    public void onLoadMoreFail(String msg) {
-        if (mSmartRefresh != null) {
-            mSmartRefresh.finishLoadMore();
-        }
-
-        loadMoreFail(msg);
-    }
-
-    /**
-     * 子类自己实现，loadMoreFail
-     *
-     * @param msg
-     */
-    protected void loadMoreFail(String msg) {
-
-    }
 
     /**
      * 子类自己实现，是否实用Rxbus,默认不使用

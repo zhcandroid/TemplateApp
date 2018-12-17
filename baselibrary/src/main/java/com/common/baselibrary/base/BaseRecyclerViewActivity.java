@@ -18,6 +18,7 @@ import butterknife.BindView;
 /**
  * 使用 smartrefresh+BaseRecyclerViewAdapterHelper
  * 开源框架实现的列表基类
+ *
  * @auther zhc
  */
 public abstract class BaseRecyclerViewActivity<T> extends CommonActivity implements BaseQuickAdapter.OnItemLongClickListener, BaseQuickAdapter.OnItemClickListener {
@@ -27,11 +28,14 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
     protected BaseQuickAdapter mAdapter;
 
     protected OnResultCallBack mOnResultCallBack;
+    protected int pageIndex;
+    protected int pageSize = 10;
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_base_rv;
     }
+
     @Override
     protected int getTitleBarId() {
         return R.id.id_titleBar;
@@ -56,15 +60,21 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
     public void initData() {
         super.initData();
 
-        mOnResultCallBack = new OnResultCallBack<List<T>>(){
+        mOnResultCallBack = new OnResultCallBack<List<T>>() {
 
             @Override
             public void onSuccess(boolean success, int code, String msg, Object tag, List<T> response) {
-                setRefreshData(response);
+                setDataList(response);
+
             }
 
             @Override
             public void onFailure(Object tag, Exception e) {
+                if (pageIndex == 0) {
+                    mSmartRefresh.finishLoadMore();
+                } else {
+                    mSmartRefresh.finishRefresh();
+                }
 
             }
 
@@ -76,17 +86,43 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
 
     }
 
-    protected void setRefreshData(List<T> list){
-        mSmartRefresh.finishRefresh();
-        mAdapter.setNewData(list);
+    protected void setDataList(List<T> response) {
+        if (pageIndex == 0) {
+            onRefreshSuccess(response);
+        } else {
+            onLoadMoreSuccess(response);
 
-
+        }
     }
 
-    protected void setLoadMoreData(List<T> list){
-        mSmartRefresh.finishLoadMore();
-        mAdapter.addData(list);
+    protected void onRefreshSuccess(List<T> list) {
+        if (mSmartRefresh != null) {
+            mSmartRefresh.finishRefresh();
+            if (list == null) {
+                return;
+            }
 
+        }
+
+        mAdapter.setNewData(list);
+        pageIndex++;
+    }
+
+
+    protected void onLoadMoreSuccess(List mlist) {
+        pageIndex++;
+        if (mSmartRefresh != null) {
+            if (mlist == null) {
+                return;
+            }
+            if (mlist.size() == 0) {
+                mSmartRefresh.finishLoadMoreWithNoMoreData();
+            } else {
+                mSmartRefresh.finishLoadMore();
+            }
+        }
+
+        mAdapter.addData(mlist);
     }
 
 

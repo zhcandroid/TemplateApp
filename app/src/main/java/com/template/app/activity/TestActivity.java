@@ -39,7 +39,7 @@ public class TestActivity extends BaseRecyclerViewActivity {
             testBean.setTest("item"+i);
             data.add(testBean);
         }
-        setRefreshData(data);
+        onRefreshSuccess(data);
     }
 
 
@@ -58,8 +58,7 @@ public class TestActivity extends BaseRecyclerViewActivity {
             testBean.setTest("new item"+i);
             data.add(testBean);
         }
-
-        setRefreshData(data);
+        onRefreshSuccess(data);
 
     }
 
@@ -72,8 +71,8 @@ public class TestActivity extends BaseRecyclerViewActivity {
             testBean.setTest("more item"+i);
             data.add(testBean);
         }
-        setLoadMoreData(data);
-        onLoadMoreSuccess(null);
+
+        onLoadMoreSuccess(data);
     }
 
 
