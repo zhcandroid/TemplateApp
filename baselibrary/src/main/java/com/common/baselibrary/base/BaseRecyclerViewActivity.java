@@ -70,14 +70,14 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
 
             @Override
             public void onFailure(Object tag, Exception e) {
-                if (pageIndex == 0) {
-                    mSmartRefresh.finishLoadMore();
-                } else {
-                    mSmartRefresh.finishRefresh();
-                }
+                onCompleted();
 
             }
 
+            /**
+             * 注意这个回调不是每次必走的
+             * 当走onFailure时 onCompleted不执行
+             */
             @Override
             public void onCompleted() {
 
@@ -95,6 +95,16 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
         }
     }
 
+    protected void onCompleted() {
+        if(mSmartRefresh != null){
+            if (pageIndex == 0) {
+                mSmartRefresh.finishLoadMore();
+            } else {
+                mSmartRefresh.finishRefresh();
+            }
+        }
+    }
+
     protected void onRefreshSuccess(List<T> list) {
         if (mSmartRefresh != null) {
             mSmartRefresh.finishRefresh();
@@ -103,14 +113,15 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
             }
 
         }
+        if(mAdapter != null){
+            mAdapter.setNewData(list);
+            pageIndex++;
+        }
 
-        mAdapter.setNewData(list);
-        pageIndex++;
     }
 
 
     protected void onLoadMoreSuccess(List mlist) {
-        pageIndex++;
         if (mSmartRefresh != null) {
             if (mlist == null) {
                 return;
@@ -121,8 +132,11 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
                 mSmartRefresh.finishLoadMore();
             }
         }
+        if(mAdapter != null){
+            mAdapter.addData(mlist);
+            pageIndex++;
+        }
 
-        mAdapter.addData(mlist);
     }
 
 
