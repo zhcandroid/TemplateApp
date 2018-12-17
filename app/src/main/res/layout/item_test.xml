@@ -2,12 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/lay_8">
 
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/lay_20"
+        android:layout_height="@dimen/lay_48"
+        android:text="item"
+        android:textColor="@color/main_blue"
+        android:textSize="@dimen/font_18"
+        android:background="@color/main_yellow"
         android:gravity="center"/>
 </LinearLayout>
