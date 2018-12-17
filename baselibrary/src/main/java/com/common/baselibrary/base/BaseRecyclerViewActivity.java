@@ -70,7 +70,7 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
 
             @Override
             public void onFailure(Object tag, Exception e) {
-                onCompleted();
+                onActionCompleted();
 
             }
 
@@ -95,7 +95,7 @@ public abstract class BaseRecyclerViewActivity<T> extends CommonActivity impleme
         }
     }
 
-    protected void onCompleted() {
+    protected void onActionCompleted() {
         if(mSmartRefresh != null){
             if (pageIndex == 0) {
                 mSmartRefresh.finishLoadMore();
