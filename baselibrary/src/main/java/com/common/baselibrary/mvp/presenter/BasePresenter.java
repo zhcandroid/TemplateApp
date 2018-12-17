@@ -32,7 +32,7 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
     }
 
     @Override
-    public void dettachView() {
+    public void detachView() {
         if (this.weakView != null) {
             this.weakView.clear();
             this.weakView = null;

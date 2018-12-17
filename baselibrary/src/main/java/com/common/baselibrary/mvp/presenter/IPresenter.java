@@ -14,7 +14,7 @@ public interface IPresenter<V extends IView>{
     /**
      * 解除绑定（每个V记得使用完之后解绑，主要是用于防止内存泄漏问题）
      */
-    void dettachView();
+    void detachView();
 
 
 }
