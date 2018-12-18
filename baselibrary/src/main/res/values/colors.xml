@@ -24,6 +24,7 @@
     <color name="white40">#40FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#808080</color>
+    <color name="gray_light">#eeeeee</color>
     <color name="green">#008000</color>
     <color name="main_yellow">#ffe088</color>
     <color name="main_blue">#1596e7</color>
