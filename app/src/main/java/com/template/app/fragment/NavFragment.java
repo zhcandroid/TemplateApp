@@ -1,4 +1,4 @@
-package com.template.app;
+package com.template.app.fragment;
 
 
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.common.baselibrary.base.BaseFragment;
+import com.template.app.R;
 import com.template.app.fragment.HomeFragment;
 import com.template.app.view.NavigationButton;
 

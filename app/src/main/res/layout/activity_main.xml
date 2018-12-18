@@ -29,7 +29,7 @@
 
         <fragment
             android:id="@+id/fag_nav"
-            android:name="com.template.app.NavFragment"
+            android:name="com.template.app.fragment.NavFragment"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_alignParentBottom="true"

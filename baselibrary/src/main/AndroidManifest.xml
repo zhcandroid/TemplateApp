@@ -1,5 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.common.baselibrary" >
+    package="com.common.baselibrary">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <application>
+
+        <!--安卓7.0的文件管理适配-->
+        <!--https://blog.csdn.net/lmj623565791/article/details/72859156-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.android7.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+
 </manifest>
