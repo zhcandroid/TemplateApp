@@ -95,5 +95,6 @@ dependencies {
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
 
-
+    // 今日头条屏幕适配方案 https://github.com/JessYanCoding/AndroidAutoSize
+    api 'me.jessyan:autosize:1.1.0'
 }

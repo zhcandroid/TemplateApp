@@ -74,8 +74,7 @@ dependencies {
 
 
 
-    // 今日头条屏幕适配方案 https://github.com/JessYanCoding/AndroidAutoSize
-    implementation 'me.jessyan:autosize:1.1.0'
+
 
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
     annotationProcessor ('com.alibaba:arouter-compiler:1.1.4') {

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.common.baselibrary.interf.BaseFragmentInterface;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
+import com.common.baselibrary.mvp.view.IView;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
@@ -18,7 +20,7 @@ import butterknife.Unbinder;
  * 碎片基础类
  */
 public abstract  class BaseFragment extends Fragment implements
-        View.OnClickListener, BaseFragmentInterface {
+        View.OnClickListener, BaseFragmentInterface ,IView {
     public static final int STATE_NONE = 0;
     public static final int STATE_REFRESH = 1;
     public static final int STATE_LOADMORE = 2;
@@ -33,18 +35,30 @@ public abstract  class BaseFragment extends Fragment implements
     boolean isSaveFragementState = true;
     private Unbinder mBinder;
 
+    protected BasePresenter presenter;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
+
+        //初始化Presenter
+        presenter = getPresenter();
+        if (presenter == null) {
+            presenter = new BasePresenter();
+        }
+        // 绑定View引用
+        presenter.attachView(this);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mContext = null;
-
+        if (presenter != null) {
+            // 断开View引用
+            presenter.detachView();
+        }
 
     }
 
@@ -55,6 +69,7 @@ public abstract  class BaseFragment extends Fragment implements
         mBundle = getArguments();
         initBundle(mBundle);
     }
+    public abstract BasePresenter getPresenter();
 
     protected void init(Bundle savedInstanceState) {
     }
