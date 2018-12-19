@@ -3,6 +3,8 @@ package com.common.baselibrary.dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
+import android.view.View;
 
 import com.common.baselibrary.AppManager;
 import com.common.baselibrary.R;
@@ -38,6 +40,26 @@ public class AppDialog {
                     }
                 });
         builder.show();
+    }
+
+    /**
+     * show dialog
+     * */
+    public static MalertDialog showClearDialog(final Context cont, final String string, View.OnClickListener listener) {
+        final MalertDialog ad=new MalertDialog(cont);
+        ad.setIsShowTitle(true);
+        ad.setTitle("show dialog");
+        ad.setMessage(string);
+        ad.setMessageGravity(Gravity.CENTER);
+        ad.setPositiveButton("确定", listener);
+        ad.setNegativeButton("取消", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ad.dismiss();
+            }
+        });
+
+        return ad;
     }
 
 }

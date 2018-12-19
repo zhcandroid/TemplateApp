@@ -69,7 +69,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 
         mNavMe.init(R.drawable.tab_icon_me,
                 R.string.main_tab_name_my,
-                HomeFragment.class);
+                PersionalFragment.class);
     }
 
     @OnClick({R.id.nav_item_news, R.id.nav_item_tweet,
