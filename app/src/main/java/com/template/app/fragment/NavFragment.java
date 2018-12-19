@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.common.baselibrary.base.BaseFragment;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.template.app.R;
 import com.template.app.fragment.HomeFragment;
 import com.template.app.view.NavigationButton;
@@ -169,6 +170,11 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 
     public interface OnNavigationReselectListener {
         void onReselect(NavigationButton navigationButton);
+    }
+
+    @Override
+    public BasePresenter getPresenter() {
+        return null;
     }
 
     @Override

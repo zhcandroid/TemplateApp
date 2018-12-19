@@ -56,6 +56,8 @@ public class PersionalFragment extends CommonLazyFragment {
             case R.id.iv_face:
                 PictureSelector.create(PersionalFragment.this)
                         .openGallery(PictureMimeType.ofImage())
+                        .maxSelectNum(1)
+                        .enableCrop(true)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
                 break;
             case R.id.tv_show_dialog:
