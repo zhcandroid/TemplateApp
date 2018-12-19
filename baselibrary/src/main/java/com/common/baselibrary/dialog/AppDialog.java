@@ -1,7 +1,9 @@
 package com.common.baselibrary.dialog;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
@@ -43,6 +45,46 @@ public class AppDialog {
     }
 
     /**
+     * 使用dialogFragment方式
+     * @param cont
+     * @param manager
+     */
+    public static void Exit(final Context cont, FragmentManager manager) {
+
+        CommonDialogFragment dialogFragment=CommonDialogFragment.newInstance(new CommonDialogFragment.OnCallDialog() {
+            @Override
+            public Dialog getDialog(Context context) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(cont);
+                builder.setMessage("确定退出吗？");
+                builder.setTitle(R.string.app_exit);
+                builder.setPositiveButton(R.string.sure,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                // 退出
+                                AppManager.getAppManager().AppExit(cont);
+
+                            }
+                        });
+                builder.setNegativeButton(R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                return  builder.create();
+            }
+        },true);
+
+        dialogFragment.show(manager,"fragment_tag");
+
+    }
+
+
+    /**
      * show dialog
      * */
     public static MalertDialog showClearDialog(final Context cont, final String string, View.OnClickListener listener) {
@@ -61,5 +103,8 @@ public class AppDialog {
 
         return ad;
     }
+
+
+
 
 }
