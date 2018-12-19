@@ -94,6 +94,9 @@ dependencies {
     //6.0 动态权限申请
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
+
+    // 今日头条屏幕适配方案 https://github.com/JessYanCoding/AndroidAutoSize
+    api 'me.jessyan:autosize:1.1.0'
     //图片先择器 https://github.com/LuckSiege/PictureSelector
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
 
