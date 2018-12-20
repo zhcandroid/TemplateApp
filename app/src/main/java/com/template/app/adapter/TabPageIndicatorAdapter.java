@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.template.app.fragment.HomeFragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TabPageIndicatorAdapter extends FragmentPagerAdapter {
 
     /**
@@ -14,20 +17,22 @@ public class TabPageIndicatorAdapter extends FragmentPagerAdapter {
      */
     private static final String[] TITLE = new String[] { "头条", "房产", "另一面", "女人",
             "财经", "数码", "情感", "科技" };
+    private Map<String, Fragment> fragmentList = null;
 
     public TabPageIndicatorAdapter(FragmentManager fm) {
         super(fm);
+        fragmentList = new HashMap<String, Fragment>();
     }
 
     @Override
     public Fragment getItem(int position) {
         //新建一个Fragment来展示ViewPager item的内容，并传递参数
-        Fragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString("arg", TITLE[position]);
-        fragment.setArguments(args);
-
-        return fragment;
+        Fragment pageFragment = fragmentList.get(TITLE[position]);
+        if (pageFragment == null) {
+            pageFragment = new HomeFragment();
+            fragmentList.put(TITLE[position], pageFragment);
+        }
+        return pageFragment;
     }
 
     @Override
