@@ -15,6 +15,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.template.app.R;
+import com.template.app.arouter.ARouterUIHelper;
 
 import java.util.List;
 
@@ -28,9 +29,10 @@ public class PersionalFragment extends CommonLazyFragment {
     CircleImageView mIvFace;
     @BindView(R.id.tv_show_dialog)
     TextView mTvShowDialog;
+    @BindView(R.id.tv_show_indicator)
+    TextView mTvShowIndicator;
 
     MalertDialog mDialog;
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_persional;
@@ -47,10 +49,9 @@ public class PersionalFragment extends CommonLazyFragment {
 
     @Override
     protected void initData() {
-
     }
 
-    @OnClick({R.id.iv_face, R.id.tv_show_dialog})
+    @OnClick({R.id.iv_face, R.id.tv_show_dialog,R.id.tv_show_indicator})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_face:
@@ -68,6 +69,9 @@ public class PersionalFragment extends CommonLazyFragment {
                     }
                 });
                 break;
+            case R.id.tv_show_indicator:
+                ARouterUIHelper.openIndicatorActivity();
+                break;
         }
     }
 
@@ -84,7 +88,7 @@ public class PersionalFragment extends CommonLazyFragment {
                     // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true  注意：音视频除外
                     // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
                     // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
-                    if (selectList.size()>0) {
+                    if (selectList.size() > 0) {
                         LocalMedia media = selectList.get(0);
                         Bitmap bitmap = ImageUtils.getBitmapByPath(media.getPath());
                         mIvFace.setImageBitmap(bitmap);

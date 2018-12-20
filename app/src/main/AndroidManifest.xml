@@ -38,7 +38,8 @@
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
 
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +50,11 @@
         <activity
             android:name=".activity.TestActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.IndicatorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators1"/>
 
     </application>
 

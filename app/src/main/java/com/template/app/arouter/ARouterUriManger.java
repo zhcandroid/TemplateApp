@@ -5,4 +5,5 @@ package com.template.app.arouter;
  * */
 public interface ARouterUriManger {
    String AROUTER_TestActivity = "/activity/TestActivity";
+   String AROUTER_IndicatorActivity = "/activity/IndicatorActivity";
 }

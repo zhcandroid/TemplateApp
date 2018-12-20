@@ -13,4 +13,8 @@ public class ARouterUIHelper {
     public static void openTestActivity(Context context, NavigationCallback callback){
         ARouterUtils.toActivity(ARouterUriManger.AROUTER_TestActivity,context,callback);
     }
+
+    public static void openIndicatorActivity(){
+        ARouterUtils.toActivity(ARouterUriManger.AROUTER_IndicatorActivity);
+    }
 }

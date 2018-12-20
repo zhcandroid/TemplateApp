@@ -19,4 +19,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/lay_20"
         android:text="show dialog"/>
+
+    <TextView
+        android:id="@+id/tv_show_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/lay_20"
+        android:layout_marginTop="@dimen/lay_20"
+        android:text="show indicator"/>
 </LinearLayout>
