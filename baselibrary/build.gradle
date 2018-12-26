@@ -98,7 +98,14 @@ dependencies {
     //图片先择器 https://github.com/LuckSiege/PictureSelector
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
 
+    //JakeWharton大神的viewPager指针
     api ('com.github.JakeWharton:ViewPagerIndicator:2.4.1') {
         exclude group: 'com.android.support'
     }
+
+    //腾讯x5webview
+    api files('libs/tbs_sdk_thirdapp_v3.6.0.1310_43612_sharewithdownload_withoutGame_obfs_20180706_163319.jar')
+
+
+
 }

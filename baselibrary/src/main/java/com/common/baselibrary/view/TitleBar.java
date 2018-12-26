@@ -124,9 +124,8 @@ public class TitleBar extends FrameLayout implements View.OnClickListener {
      *
      * @param titleRes
      */
-    @SuppressLint("ResourceType")
-    public void setTitle(@StringRes int titleRes) {
-        if (titleRes <= 0)
+    public void setTitle( String titleRes) {
+        if (TextUtils.isEmpty(titleRes))
             return;
         mTitle.setText(titleRes);
     }

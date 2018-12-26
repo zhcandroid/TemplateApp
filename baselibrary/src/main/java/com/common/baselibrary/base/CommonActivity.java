@@ -38,6 +38,8 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
 
     private RxPermissions rxPermissions;
 
+    protected  TitleBar mTitleBar;
+
     protected Activity mContext;
 
     @Override
@@ -66,8 +68,8 @@ public abstract class CommonActivity extends UiActivity implements OnTitleBarLis
         //初始化标题栏的监听
         if (getTitleBarId() > 0) {
             if (findViewById(getTitleBarId()) instanceof TitleBar) {
-                TitleBar titleBar = (TitleBar) findViewById(getTitleBarId());
-                titleBar.setTitleBarListener(this);
+                mTitleBar = (TitleBar) findViewById(getTitleBarId());
+                mTitleBar.setTitleBarListener(this);
             }
         }
 

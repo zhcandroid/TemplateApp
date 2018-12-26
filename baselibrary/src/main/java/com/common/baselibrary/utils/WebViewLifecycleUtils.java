@@ -1,12 +1,10 @@
 package com.common.baselibrary.utils;
 
 import android.view.ViewGroup;
-import android.webkit.WebView;
+
+import com.tencent.smtt.sdk.WebView;
 
 /**
- *    author : HJQ
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
  *    desc   : WebView生命周期优化工具
  */
 public final class WebViewLifecycleUtils {
