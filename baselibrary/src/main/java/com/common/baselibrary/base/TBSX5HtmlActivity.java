@@ -108,7 +108,7 @@ public class TBSX5HtmlActivity extends CommonActivity {
         // 如果target 大于等于API 17，则需要加上如下注解
         @JavascriptInterface
         public void call(String msg) {
-
+            //在js调用后的Java回调线程并不是主线程 将webview操作放在主线程中即可解决异常 WebViewPost（）
         }
 
 
@@ -116,8 +116,7 @@ public class TBSX5HtmlActivity extends CommonActivity {
 
 
     /**
-     * 在js调用后的Java回调线程并不是主线程 将webview操作放在主线程中即可解决异常
-     *
+     * 在js调用后的Java回调线程并不是主线程
      * @param commd
      */
     public void WebViewPost(final String commd) {
