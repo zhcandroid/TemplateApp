@@ -68,7 +68,7 @@ public class TBSX5HtmlActivity extends CommonActivity {
         mTitleBar.setTitle(TextUtils.isEmpty(mTitle) ? mX5WebView.getTitle() : mTitle);
         mX5WebView.setWebChromeClient(webChromeClient);
         mX5WebView.addJavascriptInterface(new WebAppInterface(TBSX5HtmlActivity.this), "AndroidWebView");
-        WebViewPost("https://www.baidu.com");
+        WebViewPost("https://www.imooc.com");
     }
 
     WebChromeClient webChromeClient = new WebChromeClient() {

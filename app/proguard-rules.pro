@@ -224,5 +224,28 @@ public static final int *;
 
 #  --------PictureSelector 2.0 end---------------------
 
+#  --------网络框架---------------------------
+ -keep class com.tamic.novate.** {*;}
 
+ #  --------BaseRecyclerViewAdapterHelper-----------------------
+ -keep class com.chad.library.adapter.** {
+ *;
+ }
+ -keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
+ -keep public class * extends com.chad.library.adapter.base.BaseViewHolder
+ -keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
+      <init>(...);
+ }
+#  --------BaseRecyclerViewAdapterHelper end----------------------
 
+#  ----------------------------路由 start---------------------------
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+
+# If you use the byType method to obtain Service, add the following rules to protect the interface:
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+
+# If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
+# -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+#  -----------------------------路由 end----------------------------
