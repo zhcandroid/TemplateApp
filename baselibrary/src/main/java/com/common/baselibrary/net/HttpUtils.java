@@ -35,10 +35,10 @@ public class HttpUtils {
 
 //        builder.addHeader(headers); //添加公共请求头
 //        builder.addParameters(parameters);//公共参数
-//        builder.connectTimeout(10);  //连接时间 可以忽略
+        builder.connectTimeout(500);  //连接时间 可以忽略
 //        builder.addCache(true);  //是否缓存 默认缓存
 //        builder.addCache(cache, cacheTime);   //自定义缓存
-//        builder.addLog(true);//是否开启log
+        builder.addLog(true);//是否开启log
 //        builder.cookieManager(new NovateCookieManager()); // 自定义cooike，可以忽略
 //        builder.addInterceptor(); // 自定义Interceptor
 //        builder.addNetworkInterceptor(); // 自定义NetworkInterceptor
@@ -135,7 +135,7 @@ public class HttpUtils {
      * @param params   请求参数
      * @param callback 回调
      */
-    public void postRequest(String url, RequestParam params, OnResultCallBack callback) {
+    public void postRequest(String url, RequestParam params, ResponseCallback callback) {
         request(REQUEST_POST, url, params, null, callback);
     }
 
@@ -302,7 +302,10 @@ public class HttpUtils {
         if (TextUtils.isEmpty(baseUrl)) {
             baseUrl = NetConfig.Url.getBaseUrl();
         }
-        builder.baseUrl(baseUrl);
+        if(!TextUtils.isEmpty(baseUrl)){
+            builder.baseUrl(baseUrl);
+        }
+
     }
 
 }

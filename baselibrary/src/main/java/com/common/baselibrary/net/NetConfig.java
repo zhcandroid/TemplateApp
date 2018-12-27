@@ -15,7 +15,7 @@ public class NetConfig {
         public static final String SUCCESS = "success";
         public static final String MSG = "errorMsg";
         public static final String CODE = "errorCode";
-        public static final String MODEL = "data";
+        public static final String MODEL = "rows";
     }
 
     /**
@@ -35,7 +35,7 @@ public class NetConfig {
 
         //服务器地址
         interface BaseUrl {
-            String SERVER_DEVELOP = "http://www.wanandroid.com";
+            String SERVER_DEVELOP = "http://sbgg.saic.gov.cn:9080/";
             String SERVER_TEST = "";
             String SERVER_PRODUCTION = "";
         }
