@@ -44,11 +44,11 @@ public abstract  class BaseFragment extends Fragment implements
 
         //初始化Presenter
         presenter = getPresenter();
-        if (presenter == null) {
-            presenter = new BasePresenter();
+        if (presenter != null) {
+            // 绑定View引用
+            presenter.attachView(this);
         }
-        // 绑定View引用
-        presenter.attachView(this);
+
     }
 
     @Override

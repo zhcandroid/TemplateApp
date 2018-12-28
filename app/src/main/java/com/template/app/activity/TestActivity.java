@@ -1,84 +1,39 @@
 package com.template.app.activity;
 
-import android.util.Log;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.common.baselibrary.base.BaseRecyclerViewActivity;
-import com.common.baselibrary.mvp.presenter.BasePresenter;
-import com.common.baselibrary.net.HttpUtils;
-import com.common.baselibrary.net.RequestParam;
-import com.common.baselibrary.net.callback.OnResultCallBack;
-import com.scwang.smartrefresh.header.TaurusHeader;
-import com.scwang.smartrefresh.header.WaveSwipeHeader;
+import com.hjq.toast.ToastUtils;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
-import com.tamic.novate.Throwable;
-import com.tamic.novate.callback.RxStringCallback;
-import com.template.app.AppConfig;
 import com.template.app.R;
 import com.template.app.adapter.TestAdapter;
 import com.template.app.arouter.ARouterUriManger;
 import com.template.app.bean.TestBean;
+import com.template.app.mvp.contract.TestContract;
+import com.template.app.mvp.presnter.TestPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = ARouterUriManger.AROUTER_TestActivity)
-public class TestActivity extends BaseRecyclerViewActivity {
-
+public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresenter> implements TestContract.TestView {
 
     @Override
-    public BasePresenter getPresenter() {
-        return null;
+    public TestPresenter getPresenter() {
+        return new TestPresenter();
     }
 
     @Override
     public void initView() {
         super.initView();
         //设置 Header 为 贝塞尔雷达 样式
-       // mSmartRefresh.setRefreshHeader(new TaurusHeader(this));
-
+        // mSmartRefresh.setRefreshHeader(new TaurusHeader(this));
     }
 
     @Override
     public void initData() {
         super.initData();
-//        List<TestBean> data = new ArrayList<>();
-//        for(int i=0;i<15;i++){
-//            TestBean testBean = new TestBean();
-//            testBean.setTest("item"+i);
-//            data.add(testBean);
-//        }
-//        onRefreshSuccess(data);
-
-
-        //net work
-        RequestParam params = new RequestParam();
-        params.addParameter("page", 1);
-        params.addParameter("rows", 20);
-        params.addParameter("annNum", 1628);
-        params.addParameter("totalYOrN", true);
-        HttpUtils.getInstance().postRequest("tmann/annInfoView/annSearchDG.html",
-                params,new RxStringCallback(){
-                    @Override
-                    public void onError(Object tag, Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onCancel(Object tag, Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(Object tag, String response) {
-                        Log.i("response",response);
-                    }
-                }
-        );
-
+        presenter.getDataFromServer();
     }
 
 
@@ -91,27 +46,27 @@ public class TestActivity extends BaseRecyclerViewActivity {
     @Override
     protected void onRefreshData(RefreshLayout refreshLayout) {
         super.onRefreshData(refreshLayout);
-        List<TestBean> data = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            TestBean testBean = new TestBean();
-            testBean.setTest("new item"+i);
-            data.add(testBean);
-        }
-        onRefreshSuccess(data);
+
 
     }
 
     @Override
     protected void onLoadMoreData(RefreshLayout refreshLayout) {
         super.onLoadMoreData(refreshLayout);
-        List<TestBean> data = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            TestBean testBean = new TestBean();
-            testBean.setTest("more item"+i);
-            data.add(testBean);
-        }
 
-        onLoadMoreSuccess(data);
+
+    }
+
+
+    /**
+     * 显示列表数据
+     *
+     * @param list
+     */
+    @Override
+    public void showList(List<TestBean> list) {
+        ToastUtils.show("showList 执行了");
+        onRefreshSuccess(list);
     }
 
 

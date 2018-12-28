@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
  *
  * @param <V>
  */
-public class BasePresenter<V extends IView> implements IPresenter<V> {
+public abstract class BasePresenter<V extends IView> implements IPresenter<V> {
 
     private WeakReference<V> weakView;
 

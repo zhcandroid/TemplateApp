@@ -11,9 +11,9 @@ import com.common.baselibrary.mvp.view.IView;
 /**
  * 描述：activity的基类
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseViewInterface, IView {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseViewInterface, IView {
 
-    protected BasePresenter presenter;
+    protected P presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,11 +23,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         }
         //初始化Presenter
         presenter = getPresenter();
-        if (presenter == null) {
-            presenter = new BasePresenter();
+        if (presenter != null) {
+            // 绑定View引用
+            presenter.attachView(this);
         }
-        // 绑定View引用
-        presenter.attachView(this);
 
         init();
 
@@ -41,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     }
 
-    public abstract BasePresenter getPresenter();
+    public abstract P getPresenter();
 
     //引入布局
     protected abstract int getLayoutId();
@@ -71,6 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         if (presenter != null) {
             // 断开View引用
             presenter.detachView();
+            presenter = null;
         }
 
     }

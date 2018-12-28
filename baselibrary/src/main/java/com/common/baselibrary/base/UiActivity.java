@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.common.baselibrary.R;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.gyf.barlibrary.ImmersionBar;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
@@ -14,7 +15,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 /**
  * 支持沉浸式和侧滑的Activity基类（默认开启沉浸式状态栏和侧滑功能）
  */
-public abstract class UiActivity extends BaseActivity implements BGASwipeBackHelper.Delegate, ViewTreeObserver.OnGlobalLayoutListener {
+public abstract class UiActivity<P extends BasePresenter>  extends BaseActivity<P> implements BGASwipeBackHelper.Delegate, ViewTreeObserver.OnGlobalLayoutListener {
 
     private ImmersionBar mImmersionBar;//状态栏沉浸
     private BGASwipeBackHelper mSwipeBackHelper;//侧滑返回

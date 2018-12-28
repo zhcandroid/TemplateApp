@@ -7,6 +7,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.common.baselibrary.R;
 import com.common.baselibrary.R2;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.common.baselibrary.net.callback.OnResultCallBack;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -21,7 +22,7 @@ import butterknife.BindView;
  *
  * @auther zhc
  */
-public abstract class BaseRecyclerViewActivity<T> extends CommonActivity implements BaseQuickAdapter.OnItemLongClickListener, BaseQuickAdapter.OnItemClickListener {
+public abstract class BaseRecyclerViewActivity<T,P extends BasePresenter> extends CommonActivity<P> implements BaseQuickAdapter.OnItemLongClickListener, BaseQuickAdapter.OnItemClickListener {
 
     @BindView(R2.id.recyclerView)
     protected RecyclerView mRecyclerView;

@@ -9,6 +9,7 @@ import android.view.View;
 import com.common.baselibrary.R;
 import com.common.baselibrary.entity.Event;
 import com.common.baselibrary.interf.OnTitleBarListener;
+import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.common.baselibrary.utils.RxBus;
 import com.common.baselibrary.view.TitleBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -29,7 +30,7 @@ import io.reactivex.functions.Consumer;
 /**
  * 项目中的Activity基类
  */
-public abstract class CommonActivity extends UiActivity implements OnTitleBarListener {
+public abstract class CommonActivity<P extends BasePresenter> extends UiActivity<P> implements OnTitleBarListener {
 
     private Unbinder mButterKnife;//View注解
     private CompositeDisposable mDisposables;

@@ -35,7 +35,7 @@ public class HttpUtils {
 
 //        builder.addHeader(headers); //添加公共请求头
 //        builder.addParameters(parameters);//公共参数
-        builder.connectTimeout(500);  //连接时间 可以忽略
+        builder.connectTimeout(50);  //连接时间 可以忽略
 //        builder.addCache(true);  //是否缓存 默认缓存
 //        builder.addCache(cache, cacheTime);   //自定义缓存
         builder.addLog(true);//是否开启log
