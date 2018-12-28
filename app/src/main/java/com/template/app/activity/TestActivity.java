@@ -1,5 +1,7 @@
 package com.template.app.activity;
 
+import android.view.View;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.common.baselibrary.base.BaseRecyclerViewActivity;
@@ -70,4 +72,13 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
     }
 
 
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        super.onItemClick(adapter, view, position);
+        TestBean testBean = (TestBean) adapter.getData().get(position);
+        ToastUtils.show(testBean.reg_name);
+
+
+    }
 }
