@@ -2,13 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <com.common.baselibrary.view.TitleBar
+        android:id="@+id/id_titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lay_44"
+        android:background="@color/main_blue"
+        app:aTitle="viewPager"></com.common.baselibrary.view.TitleBar>
 
     <com.viewpagerindicator.TabPageIndicator
         android:id="@+id/indicator"
         android:visibility="gone"
         android:background="@color/white"
-        android:layout_marginTop="@dimen/lay_40"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         />

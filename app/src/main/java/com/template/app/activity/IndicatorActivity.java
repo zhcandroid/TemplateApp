@@ -32,7 +32,7 @@ public class IndicatorActivity extends CommonActivity {
 
     @Override
     protected int getTitleBarId() {
-        return 0;
+       return R.id.id_titleBar;
     }
 
     @Override
