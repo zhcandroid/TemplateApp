@@ -52,11 +52,15 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
     @Override
     protected void onRefreshData(RefreshLayout refreshLayout) {
         super.onRefreshData(refreshLayout);
+        pageIndex = 0;
+        presenter.getDataFromServer();
+
     }
 
     @Override
     protected void onLoadMoreData(RefreshLayout refreshLayout) {
         super.onLoadMoreData(refreshLayout);
+        presenter.getDataFromServer();
 
     }
 
@@ -68,7 +72,7 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
     @Override
     public void showList(List<TestBean> list) {
         ToastUtils.show("showList 执行了");
-        onRefreshSuccess(list);
+        setDataList(list);
     }
 
 
@@ -77,7 +81,7 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         super.onItemClick(adapter, view, position);
         TestBean testBean = (TestBean) adapter.getData().get(position);
-        ToastUtils.show(testBean.reg_name);
+        ToastUtils.show(testBean.name);
 
 
     }

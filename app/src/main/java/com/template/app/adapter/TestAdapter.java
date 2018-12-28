@@ -12,6 +12,6 @@ public class TestAdapter extends BaseQuickAdapter<TestBean,BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, TestBean item) {
-        helper.setText(R.id.tv_test,item.reg_name);
+        helper.setText(R.id.tv_test,item.name);
     }
 }

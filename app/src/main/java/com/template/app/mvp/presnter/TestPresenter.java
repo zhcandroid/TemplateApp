@@ -1,10 +1,14 @@
 package com.template.app.mvp.presnter;
 
 
+import android.util.Log;
+
 import com.common.baselibrary.mvp.presenter.BasePresenter;
 import com.common.baselibrary.net.HttpUtils;
 import com.common.baselibrary.net.RequestParam;
 import com.common.baselibrary.net.callback.OnResultCallBack;
+import com.tamic.novate.Throwable;
+import com.tamic.novate.callback.RxStringCallback;
 import com.template.app.bean.TestBean;
 import com.template.app.mvp.contract.TestContract;
 
@@ -22,13 +26,35 @@ public class TestPresenter extends BasePresenter<TestContract.TestView> implemen
     public void getDataFromServer() {
         if(isAttachView()){
             //net work
-            RequestParam params = new RequestParam();
-            params.addParameter("page", 1);
-            params.addParameter("rows", 20);
-            params.addParameter("annNum", 1628);
-            params.addParameter("totalYOrN", true);
-            HttpUtils.getInstance().postRequest("tmann/annInfoView/annSearchDG.html",
-                    params, new OnResultCallBack<List<TestBean>>() {
+//            RequestParam params = new RequestParam();
+//            params.addParameter("page", 1);
+//            params.addParameter("rows", 20);
+//            params.addParameter("annNum", 1628);
+//            params.addParameter("totalYOrN", true);
+//            HttpUtils.getInstance().postRequest("tmann/annInfoView/annSearchDG.html",
+//                    params, new OnResultCallBack<List<TestBean>>() {
+//
+//                        @Override
+//                        public void onSuccess(boolean success, int code, String msg, Object tag, List<TestBean> response) {
+//                            if(response != null && response.size() > 0){
+//                                getView().showList(response);
+//
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Object tag, Exception e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onCompleted() {
+//
+//                        }
+//                    }
+//            );
+//
+            HttpUtils.getInstance().jsonRequest("/wxarticle/chapters/json", new OnResultCallBack<List<TestBean>>() {
 
                         @Override
                         public void onSuccess(boolean success, int code, String msg, Object tag, List<TestBean> response) {
@@ -48,7 +74,12 @@ public class TestPresenter extends BasePresenter<TestContract.TestView> implemen
 
                         }
                     }
+
+
             );
+
+
+
         }
 
 
