@@ -15,6 +15,10 @@ import com.template.app.mvp.presnter.TestPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 使用契约类Contract是为了减少java文件数量 方便查看管理
+ * 这里的mvp模式 的model层弱化了 因为已经的封装了网络层 这里把网络层看做了model'层
+ */
 @Route(path = ARouterUriManger.AROUTER_TestActivity)
 public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresenter> implements TestContract.TestView {
 
@@ -46,17 +50,13 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
     @Override
     protected void onRefreshData(RefreshLayout refreshLayout) {
         super.onRefreshData(refreshLayout);
-
-
     }
 
     @Override
     protected void onLoadMoreData(RefreshLayout refreshLayout) {
         super.onLoadMoreData(refreshLayout);
 
-
     }
-
 
     /**
      * 显示列表数据

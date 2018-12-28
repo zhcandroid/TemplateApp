@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * testActivity控制器
+ * 使用契约类Contract是为了减少java文件数量 方便查看管理
+ *
  */
 public interface TestContract {
 
