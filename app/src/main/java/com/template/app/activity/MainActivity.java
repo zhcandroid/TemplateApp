@@ -3,6 +3,7 @@ package com.template.app.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
+import com.common.baselibrary.base.CommonActivity;
 import com.common.baselibrary.base.UiActivity;
 import com.common.baselibrary.interf.OnTabReselectListener;
 import com.common.baselibrary.mvp.presenter.BasePresenter;
@@ -10,7 +11,7 @@ import com.template.app.R;
 import com.template.app.fragment.NavFragment;
 import com.template.app.view.NavigationButton;
 
-public class MainActivity extends UiActivity implements NavFragment.OnNavigationReselectListener{
+public class MainActivity extends CommonActivity implements NavFragment.OnNavigationReselectListener{
 
     private NavFragment mNavBar;
 

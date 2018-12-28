@@ -16,14 +16,16 @@ import android.view.ViewGroup;
 import java.lang.reflect.Field;
 
 /**
- *
- *    desc   : Fragment懒加载基类
+ *  isOpenLazyLoad() 是否开启懒加载 默认不开启
+ *  注意: 在ViewPager中时使用时建议打开
+ *  desc : Fragment懒加载基类
  */
 public abstract class BaseLazyFragment extends Fragment {
 
     private boolean isLazyLoad = false;//是否已经懒加载
     private View mRootView;//根布局
     public Activity mActivity;//Activity对象
+
 
     /**
      * 获得全局的，防止使用getActivity()为空
@@ -70,6 +72,14 @@ public abstract class BaseLazyFragment extends Fragment {
         return false;
     }
 
+    /**
+     *  是否开启懒加载 默认不开启
+     * @return
+     */
+    protected boolean isOpenLazyLoad() {
+        return false;
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -80,22 +90,36 @@ public abstract class BaseLazyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (isVisibleToUser && !isLazyLoad() && getView() != null) {
-            isLazyLoad = true;
+
+        if(isOpenLazyLoad()){
+            //当打开懒加载时 只有满足一下条件才会初始化数据 init（）
+            if (isVisibleToUser && !isLazyLoad() && getView() != null) {
+                isLazyLoad = true;
+                init();
+            }
+        }else{
             init();
         }
+
+
     }
 
     private boolean isVisibleToUser;
 
+    /**
+     * 这里有一个很大的坑 妈蛋 这个函数只有结合ViewPager时才起作用
+     * 所以在我们的mainActivity里 永远不会调用
+     * @param isVisibleToUser
+     */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser = isVisibleToUser;
         if (isVisibleToUser && !isLazyLoad() && getView() != null) {
             isLazyLoad = true;
             init();
         }
-        super.setUserVisibleHint(isVisibleToUser);
+
     }
 
     public boolean isVisibleToUser() {
