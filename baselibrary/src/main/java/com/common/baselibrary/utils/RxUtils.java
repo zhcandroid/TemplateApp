@@ -11,8 +11,10 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
+/**
+ * rxjava 工具类
+ */
 public class RxUtils {
-
 
     /**
      * View 的点击事件防抖

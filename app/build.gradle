@@ -38,7 +38,6 @@ android {
         }
     }
 
-
     //防止编译的时候oom、GC
     dexOptions {
         javaMaxHeapSize "4g"
@@ -58,8 +57,14 @@ android {
             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
     }
+    //升级到3.0之后 打包代码变更如下
+    android.applicationVariants.all {
+        variant ->variant.outputs.all {
+            outputFileName = "template_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
+        }
+    }
 
-
+    sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jni/'] } }
 }
 
 dependencies {
@@ -73,7 +78,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.var.butterknifeVersion"
-    annotationProcessor ('com.alibaba:arouter-compiler:1.1.4') {
+    annotationProcessor('com.alibaba:arouter-compiler:1.1.4') {
         exclude group: 'com.android.support'
     }
 
