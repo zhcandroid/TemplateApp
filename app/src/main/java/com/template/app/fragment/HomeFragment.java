@@ -1,6 +1,7 @@
 package com.template.app.fragment;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class HomeFragment extends CommonLazyFragment {
     }
 
     @OnClick({R.id.tv_btn, R.id.banner})
-    public void onClick() {
+    public void onClick(View view) {
 //        ARouterUIHelper.openTestActivity();
         ARouterUIHelper.openTestActivity(getActivity(), new NavCallback() {
             @Override

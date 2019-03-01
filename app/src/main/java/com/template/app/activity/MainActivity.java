@@ -7,9 +7,11 @@ import com.common.baselibrary.base.CommonActivity;
 import com.common.baselibrary.base.UiActivity;
 import com.common.baselibrary.interf.OnTabReselectListener;
 import com.common.baselibrary.mvp.presenter.BasePresenter;
+import com.hjq.toast.ToastUtils;
 import com.template.app.R;
 import com.template.app.fragment.NavFragment;
 import com.template.app.view.NavigationButton;
+import com.tinkerpatch.sdk.TinkerPatch;
 
 public class MainActivity extends CommonActivity implements NavFragment.OnNavigationReselectListener{
 
@@ -35,6 +37,13 @@ public class MainActivity extends CommonActivity implements NavFragment.OnNaviga
         FragmentManager manager = getSupportFragmentManager();
         mNavBar = ((NavFragment) manager.findFragmentById(R.id.fag_nav));
         mNavBar.setup(this, manager, R.id.main_container, this);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        TinkerPatch.with().fetchPatchUpdate(true);
+        ToastUtils.show("Tinker强制更新已经打开");
     }
 
     @Override

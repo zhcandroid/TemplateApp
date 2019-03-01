@@ -8,12 +8,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         //https://blog.csdn.net/huwan12345/article/details/77976533
         classpath "com.jakewharton:butterknife-gradle-plugin:8.4.0"
 
         classpath "com.alibaba:arouter-register:1.0.2"
+
+        classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:${TINKERPATCH_VERSION}"
     }
 }
 
@@ -34,10 +36,10 @@ task clean(type: Delete) {
 
 ext {
     var= [
-            minSdkVersion : 15,
+            minSdkVersion : 17,
             targetSdkVersion : 28,
             versionCode : 1,
-            versionName : "1.0",
+            versionName : "1.0.0",
 
             compileSdkVersion : 28,
             buildToolsVersion: "28.0.2",
