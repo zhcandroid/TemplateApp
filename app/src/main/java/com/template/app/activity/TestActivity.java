@@ -14,7 +14,6 @@ import com.template.app.bean.TestBean;
 import com.template.app.mvp.contract.TestContract;
 import com.template.app.mvp.presnter.TestPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,6 +82,7 @@ public class TestActivity extends BaseRecyclerViewActivity<TestBean, TestPresent
         TestBean testBean = (TestBean) adapter.getData().get(position);
         ToastUtils.show(testBean.name);
 
-
     }
+
+
 }

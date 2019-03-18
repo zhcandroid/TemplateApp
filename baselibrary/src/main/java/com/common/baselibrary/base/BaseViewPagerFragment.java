@@ -26,6 +26,7 @@ public abstract class BaseViewPagerFragment extends CommonLazyFragment {
     @BindView(R2.id.base_viewPager)
     protected ViewPager mBaseViewPager;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_base_viewpager;
