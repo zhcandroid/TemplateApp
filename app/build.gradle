@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.alibaba.arouter'
 //对热修复的插件进行依赖
 apply from: 'tinkerpatch.gradle'
-
+//美团多渠道打包
+apply plugin: 'walle'
 android {
     signingConfigs {
         release {
@@ -52,6 +53,7 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+//    -------------使用walle打包 不在使用productFlavors方式 ------------------------------------
 //    flavorDimensions "default"//这个名字貌似随便取，也可以有多个，总之一定要有
 //    //多渠道打包
 //    productFlavors {
@@ -101,4 +103,18 @@ dependencies {
     implementation("com.tinkerpatch.sdk:tinkerpatch-android-sdk:${TINKERPATCH_VERSION}") {
         changing = true
     }
+
+    //美团多渠道打包
+    implementation 'com.meituan.android.walle:library:1.1.6'
+
+
+}
+//生成渠道包 ./gradlew clean assembleReleaseChannels
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
 }

@@ -35,8 +35,6 @@ public class BaseLibraryApp {
         ToastUtils.init(app);
         //路由初始化
         ARouter.init(app);
-        // 友盟统计
-        MobclickAgent.setScenarioType(app, MobclickAgent.EScenarioType.E_UM_NORMAL);
 
 
     }
