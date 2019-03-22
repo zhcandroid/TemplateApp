@@ -1,6 +1,5 @@
 package com.template.app.fragment;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,7 +8,6 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.common.baselibrary.base.CommonLazyFragment;
 import com.common.baselibrary.utils.ImageLoaderUtils;
-import com.hjq.toast.ToastUtils;
 import com.template.app.R;
 import com.template.app.arouter.ARouterUIHelper;
 
