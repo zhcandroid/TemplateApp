@@ -35,7 +35,7 @@ public class HomeFragment extends CommonLazyFragment {
 
         String imgUrl = "http://pic9.photophoto.cn/20081229/0034034829945374_b.jpg";
         ImageLoaderUtils.loadImage(iv_banner, imgUrl);
-
+        //todo
     }
 
     @Override
