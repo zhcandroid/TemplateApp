@@ -73,6 +73,11 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
                 PersionalFragment.class);
     }
 
+    @Override
+    public void initData() {
+
+    }
+
     @OnClick({R.id.nav_item_news, R.id.nav_item_tweet,
             R.id.nav_item_explore, R.id.nav_item_me,
             R.id.nav_item_tweet_pub})
@@ -187,10 +192,4 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         super.onDestroy();
     }
 
-
-
-    @Override
-    public void initData() {
-
-    }
 }

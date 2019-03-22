@@ -43,8 +43,7 @@ public class HomeFragment extends CommonLazyFragment {
     }
 
     @OnClick({R.id.tv_btn, R.id.banner})
-    public void onClick(View view) {
-//        ARouterUIHelper.openTestActivity();
+    public void onViewClick(View view) {
         ARouterUIHelper.openTestActivity(getActivity(), new NavCallback() {
             @Override
             public void onFound(Postcard postcard) {
