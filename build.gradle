@@ -8,18 +8,18 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.1.4'
 
         //https://blog.csdn.net/huwan12345/article/details/77976533
         classpath "com.jakewharton:butterknife-gradle-plugin:8.4.0"
 
         classpath "com.alibaba:arouter-register:1.0.2"
 
-        // bugly tinker热更新
-        //classpath "com.tencent.bugly:tinker-support:1.1.2"
-
         //美团多渠道打包
         classpath 'com.meituan.android.walle:plugin:1.1.6'
+
+        // tinkersupport插件, 其中lastest.release指拉取最新版本，也可以指定明确版本号，例如1.0.4
+        classpath "com.tencent.bugly:tinker-support:1.1.5"
     }
 }
 
@@ -29,6 +29,7 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+
     }
 }
 

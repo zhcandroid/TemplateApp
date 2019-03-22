@@ -249,3 +249,13 @@ public static final int *;
 # If single-type injection is used, that is, no interface is defined to implement IProvider, the following rules need to be added to protect the implementation
 # -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 #  -----------------------------路由 end----------------------------
+
+#---------bugly 热更新-----------------
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+# tinker混淆规则
+-dontwarn com.tencent.tinker.**
+-keep class com.tencent.tinker.** { *; }
+
+#---------bugly end-----------------
+
